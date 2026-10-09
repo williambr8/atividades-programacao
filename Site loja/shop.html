@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - RIBB.STORE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-soft">
+
+  <!-- HEADER (mesmo do index) -->
+  <header class="fixed top-0 left-0 w-full bg-black text-white z-50 shadow-xl">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html">
+        <img src="assets/logo/ribb-logo.png" alt="RIBB.STORE" class="h-14" />
+      </a>
+      <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest">
+        <a href="index.html" class="hover:text-gold">Início</a>
+        <a href="shop.html" class="text-gold">Shop</a>
+        <a href="#" class="hover:text-gold">Lançamentos</a>
+        <a href="#" class="hover:text-gold">Ofertas</a>
+      </nav>
+      <div class="flex items-center gap-5">
+        <button onclick="toggleSearch()" class="text-2xl">🔍</button>
+        <button class="text-2xl">👤</button>
+        <button onclick="toggleWishlist()" class="text-2xl">♡</button>
+        <button onclick="toggleCart()" class="text-2xl relative" id="cart-icon">
+          🛒 <span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="pt-24 max-w-7xl mx-auto px-6">
+    <h1 class="text-4xl font-light uppercase tracking-widest mb-10">Todas as Peças</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <!-- FILTROS -->
+      <div class="lg:col-span-1">
+        <div class="bg-white p-6 rounded-3xl sticky top-24">
+          <h3 class="font-semibold mb-6">Filtros</h3>
+          
+          <div class="space-y-8">
+            <div>
+              <p class="mb-3 font-medium">Preço</p>
+              <input type="range" min="100" max="800" value="500" class="w-full">
+            </div>
+
+            <div>
+              <p class="mb-3 font-medium">Tamanho</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="size-btn">PP</button>
+                <button class="size-btn">P</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">G</button>
+                <button class="size-btn">GG</button>
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-3 font-medium">Categoria</p>
+              <select id="category-filter" class="w-full p-3 border rounded-2xl">
+                <option value="">Todas</option>
+                <option value="Vestidos">Vestidos</option>
+                <option value="Blazers">Blazers</option>
+                <option value="Conjuntos">Conjuntos</option>
+                <option value="Blusas">Blusas</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUTOS -->
+      <div class="lg:col-span-3">
+        <div id="shop-grid" class="grid grid-cols-2 md:grid-cols-3 gap-8"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Flutuante -->
+  <a href="https://wa.me/5511958306589?text=Olá!%20Estou%20na%20loja%20e%20quero%20ajuda." 
+     target="_blank"
+     class="fixed bottom-6 right-6 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-50 hover:scale-110 transition">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="w-9">
+  </a>
+
+
+
+<!-- CART DRAWER -->
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full md:w-96 bg-black text-white shadow-2xl transform translate-x-full transition-transform duration-300 z-[100] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-light">Seu Carrinho</h2>
+        <button onclick="closeCart()" class="text-4xl leading-none hover:text-gold">×</button>
+      </div>
+      <div id="cart-items" class="space-y-8 mb-10"></div>
+
+      <div class="border-t border-white/20 pt-6">
+        <div class="flex justify-between text-lg mb-6">
+          <span>Total</span>
+          <span class="text-gold font-bold">R$ <span id="cart-total">0,00</span></span>
+        </div>
+        <button onclick="finalizePurchase()" class="w-full bg-gold text-black py-5 rounded-full font-medium text-lg hover:bg-white transition mb-4">
+          Finalizar Compra
+        </button>
+        <a href="https://wa.me/5511958306589?text=Olá! Quero finalizar meu pedido" target="_blank" class="block text-center text-green-400 hover:underline">
+          Ou finalizar via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

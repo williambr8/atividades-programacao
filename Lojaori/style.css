@@ -1,0 +1,20 @@
+.hero {
+    height: 400px; /* Defina uma altura para ela aparecer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    /* Adicione as linhas abaixo: */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('imagens/ribb-logo.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+}
+
+.hero h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+}

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="5wlRzmy8mwDOMJyLf_I4fcp3lMQBK3W4759Tcief99k" />
+
+    <title>RIBB.STORE | Moda Feminina</title>
+    <meta name="description" content="Loja feminina RIBB.STORE com vestidos, roupas modernas e moda acessível.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-tap-highlight-color: transparent; /* Remove o flash azul ao tocar no mobile */
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            background: #000000;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 22px; /* Reduzido levemente para evitar quebras no mobile */
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff68e3;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            padding: 6px 12px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            max-width: 180px;
+        }
+
+        .search-input {
+            border: none;
+            background: transparent;
+            outline: none;
+            padding: 2px 5px;
+            width: 80px;
+            transition: width 0.3s ease;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .search-input:focus {
+            width: 120px;
+        }
+
+        .icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: #ff68e3;
+            color: #fff;
+            font-size: 10px;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000;
+        }
+
+        /* --- Hero Banner --- */
+        .hero {
+            height: 400px; 
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111; 
+            background-image: url('imagens/ribb-logo.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero h2 {
+            font-size: clamp(28px, 5vw, 48px);
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-btn {
+            padding: 14px 35px;
+            background: #ff68e3;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        /* --- Grid de Produtos --- */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 5% 60px;
+        }
+
+        .product-card {
+            border-radius: 8px;
+            overflow: hidden;
+            background: #111; /* Leve fundo para destacar o card no mobile */
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-image-wrapper {
+            width: 100%;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-name {
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: 400;
+            color: #ddd;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 12px; /* Botão maior para facilitar o toque no celular */
+            background: #222;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            border-radius: 4px;
+        }
+
+        .add-to-cart-btn:hover, .add-to-cart-btn:active {
+            background: #ff68e3;
+        }
+
+        /* --- MODAL DO CARRINHO --- */
+        #cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 380px;
+            height: 100%;
+            background: #111; /* Mudado para escuro para combinar com o site */
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            z-index: 2000;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        #cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .close-cart {
+            cursor: pointer;
+            font-size: 24px;
+            padding: 5px;
+        }
+
+        #cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #333;
+        }
+
+        .remove-btn {
+            color: #ff68e3;
+            cursor: pointer;
+            font-size: 13px;
+            border: none;
+            background: none;
+            padding: 5px;
+        }
+
+        .empty-msg {
+            text-align: center;
+            color: #666;
+            margin-top: 50px;
+        }
+
+        /* Overlay */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            z-index: 1500;
+        }
+
+        #overlay.active { display: block; }
+
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 40px 5% 30px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 10px;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #ff68e3;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #25d366;
+        }
+
+        /* --- BOTÃO FLUTUANTE DO WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+            z-index: 1400; /* Fica abaixo apenas do modal do carrinho e overlay */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+            color: #fff;
+        }
+
+        /* --- MEDIA QUERIES (MOBILE) --- */
+        @media (max-width: 768px) {
+            nav { display: none; } /* Oculta menu comum. Dica: no futuro pode criar um menu hambúrguer */
+            
+            .header-container {
+                padding: 10px 4%;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .search-container {
+                max-width: 130px;
+                padding: 5px 10px;
+            }
+
+            .search-input {
+                width: 60px;
+                font-size: 12px;
+            }
+
+            .search-input:focus {
+                width: 80px;
+            }
+
+            .products-container { 
+                grid-template-columns: repeat(2, 1fr); /* Dois produtos por linha no celular */
+                gap: 12px; /* Espaçamento menor para telas pequenas */
+                padding: 0 3% 40px;
+            }
+
+            .product-card {
+                border-radius: 6px;
+            }
+
+            .product-info {
+                padding: 8px;
+            }
+
+            .product-name {
+                font-size: 13px;
+            }
+
+            .product-price {
+                font-size: 14px;
+            }
+
+            .add-to-cart-btn {
+                padding: 10px;
+                font-size: 11px;
+            }
+
+            #cart-modal { 
+                width: 100%; /* Carrinho vira tela cheia no celular */
+                right: -100%;
+            }
+            
+            .hero {
+                height: 300px; /* Banner menor no celular */
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="overlay"></div>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">MODA FEMININA</a>
+            <nav>
+                <ul>
+                    <li><a href="#">Novidades</a></li>
+                    <li><a href="#">Roupas</a></li>
+                    <li><a href="#">Vestidos</a></li>
+                </ul>
+            </nav>
+
+            <div class="icons">
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass" style="font-size: 12px; color: #777;"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar...">
+                </div>
+
+                <button class="icon-btn" id="open-cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cart-counter">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5511958306589" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div id="cart-modal">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <i class="fa-solid fa-xmark close-cart" id="close-cart"></i>
+        </div>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+            <button class="hero-btn" style="width: 100%; margin-top: 20px;">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <!-- Sua imagem de fundo ou texto do Banner entra aqui -->
+    </section>
+
+    <h2 class="section-title">Coleção Completa</h2>
+
+    <main class="products-container" id="productGrid">
+        <div id="no-results" style="display:none; grid-column: 1/-1; text-align: center; color: #888; padding: 50px;">Nenhum produto encontrado.</div>
+
+        <!-- 24 Produtos Totais -->
+        <!-- Originais -->
+        <div class="product-card" data-name="Vestido Midi Acetinado" data-price="149,90">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Vestido Midi Acetinado</p><p class="product-price">R$ 149,90</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Top Minimalist White" data-price="45,00">
+            <div class="product-image-wrapper"><img src="https://tse2.mm.bing.net/th/id/OIP.mpqxmpahAParValHeLCk3QHaLF?rs=1&pid=ImgDetMain&o=7&rm=3" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Top Minimalist White</p><p class="product-price">R$ 45,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Saia Evasê Estampada" data-price="98,00">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Saia Evasê Estampada</p><p class="product-price">R$ 98,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Calça Pantalona Linho" data-price="179,90">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Calça Pantalona Linho</p><p class="product-price">R$ 179,90</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Blazer Alfaiataria Slim" data-price="259,00">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1475180098004-ca77a66827be?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Blazer Alfaiataria Slim</p><p class="product-price">R$ 259,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Vestido Boho Chic Summer" data-price="189,90">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Vestido Boho Chic Summer</p><p class="product-price">R$ 189,90</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Calça Jeans Wide Leg" data-price="129,00">
+            <div class="product-image-wrapper"><img src="https://58532.cdn.simplo7.net/static/58532/sku/feminino-camisa-feminina-social-manga-curta-branca-ibiza-p-1737743548271.jpg" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Calça Jeans Wide Leg</p><p class="product-price">R$ 129,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Conjunto Soft Cozy" data-price="210,00">
+            <div class="product-image-wrapper"><img src="https://gfx.nrk.no/-HAieU_TWS8qHGlOTrQ4Fwqn23zqabz_OaOj5JNm6Rig" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Conjunto Soft Cozy</p><p class="product-price">R$ 210,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+
+        <!-- Novas Roupas -->
+        <div class="product-card" data-name="Vestido Curto Urban" data-price="115,00">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Vestido Curto Urban</p><p class="product-price">R$ 115,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Body Black Velvet" data-price="79,90">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1516575334481-f85287c2c82d?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Body Black Velvet</p><p class="product-price">R$ 79,90</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Jaqueta Jeans Oversized" data-price="220,00">
+            <div class="product-image-wrapper"><img src="https://58532.cdn.simplo7.net/static/58532/sku/feminino-camisa-feminina-social-manga-curta-cinza-ibiza-p-1681236158708.jpg" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Jaqueta Jeans Oversized</p><p class="product-price">R$ 220,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Shorts Jeans Mom" data-price="89,90">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Shorts Jeans Mom</p><p class="product-price">R$ 89,90</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Camisa de Seda" data-price="159,00">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Camisa de Seda</p><p class="product-price">R$ 159,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Saia Plissada Nude" data-price="125,00">
+            <div class="product-image-wrapper"><img src="https://images.tcdn.com.br/img/img_prod/727249/saia_midi_hinalia_318_1_10c6b6b419f57d971ef707bcbf409032.jpg" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Saia Midi </p><p class="product-price">R$ 125,00</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+        <div class="product-card" data-name="Cropped Canelado" data-price="39,90">
+            <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" class="product-image"></div>
+            <div class="product-info"><p class="product-name">Cropped Canelado</p><p class="product-price">R$ 39,90</p><button class="add-to-cart-btn">Adicionar</button></div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Suporte</h4>
+                <ul>
+                
+                    <li>Gmail</li>
+                </ul>
+            </div>
+        </div>
+        <p style="text-align: center; font-size: 11px; color: #777;">&copy; 2026 RIBB.STORE</p>
+    </footer>
+
+    <script>
+        // --- BUSCA ---
+        const searchInput = document.getElementById('searchInput');
+        const productCards = document.querySelectorAll('.product-card');
+        const noResults = document.getElementById('no-results');
+
+        searchInput.addEventListener('input', () => {
+            const term = searchInput.value.toLowerCase().trim();
+            let found = false;
+            productCards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                if(name.includes(term)) { card.style.display = 'flex'; found = true; }
+                else { card.style.display = 'none'; }
+            });
+            noResults.style.display = found ? 'none' : 'block';
+        });
+
+        // --- CARRINHO ---
+        let cart = [];
+        const cartModal = document.getElementById('cart-modal');
+        const overlay = document.getElementById('overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCounter = document.getElementById('cart-counter');
+
+        document.getElementById('open-cart').onclick = () => { cartModal.classList.add('active'); overlay.classList.add('active'); };
+        const close = () => { cartModal.classList.remove('active'); overlay.classList.remove('active'); };
+        document.getElementById('close-cart').onclick = close; overlay.onclick = close;
+
+        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+            btn.onclick = () => {
+                const card = btn.closest('.product-card');
+                cart.push({ id: Date.now() + Math.random(), name: card.getAttribute('data-name'), price: card.getAttribute('data-price') });
+                updateUI();
+            };
+        });
+
+        function updateUI() {
+            cartCounter.innerText = cart.length;
+            cartItemsContainer.innerHTML = cart.length === 0 ? '<p class="empty-msg">Vazio</p>' : '';
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `<div><p><b>${item.name}</b></p><p>R$ ${item.price}</p></div>
+                                <button class="remove-btn" onclick="remove(${item.id})">Remover</button>`;
+                cartItemsContainer.appendChild(div);
+            });
+        }
+
+        window.remove = (id) => { cart = cart.filter(i => i.id !== id); updateUI(); };
+    </script>
+</body>
+</html>

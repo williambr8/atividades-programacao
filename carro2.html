@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPrime Veículos - Honda Civic 2020</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background: linear-gradient(90deg, #000000, #1c1c1c);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .car-title {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 32px;
+            color: #0a8f2f;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-box {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .info-box strong {
+            display: block;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .info-box span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe5d;
+        }
+
+        .btn-call {
+            background-color: #111;
+            color: white;
+        }
+
+        .btn-call:hover {
+            background-color: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #111;
+            color: white;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 768px){
+            .car-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚘 AutoPrime Veículos</h1>
+</header>
+
+<div class="container">
+    
+    <img class="car-image" src="https://via.placeholder.com/1100x450" alt="Honda Civic 2020">
+
+    <div class="content">
+        <h2 class="car-title">Honda Civic 2020 EXL 2.0 Automático</h2>
+
+        <p class="price">R$ 89.900</p>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>Ano</strong>
+                <span>2020</span>
+            </div>
+
+            <div class="info-box">
+                <strong>Quilometragem</strong>
+                <span>45.000 km</span>
+            </div>
+
+            <div class="info-box">
+                <strong>Combustível</strong>
+                <span>Flex</span>
+            </div>
+
+            <div class="info-box">
+                <strong>Câmbio</strong>
+                <span>Automático</span>
+            </div>
+
+            <div class="info-box">
+                <strong>Cor</strong>
+                <span>Preto</span>
+            </div>
+
+            <div class="info-box">
+                <strong>Condição</strong>
+                <span>Único Dono</span>
+            </div>
+        </div>
+
+        <p class="description">
+            Veículo em excelente estado de conservação, revisões em dia,
+            completo com ar-condicionado digital, direção elétrica,
+            central multimídia, bancos em couro, sensor de estacionamento
+            e câmera de ré.
+        </p>
+
+        <div class="btn-container">
+            <button class="btn btn-whatsapp"
+                onclick="window.open('https://wa.me/5511999999999','_blank')">
+                💬 Falar no WhatsApp
+            </button>
+
+            <button class="btn btn-call"
+                onclick="alert('Ligue agora: (11) 99999-9999')">
+                📞 Ligar Agora
+            </button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2026 AutoPrime Veículos - Todos os direitos reservados
+</footer>
+
+</body>
+</html>

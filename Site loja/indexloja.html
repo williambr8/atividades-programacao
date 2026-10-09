@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RIBB.STORE - Moda Feminina Sofisticada e Elegante" />
+  <title>RIBB.STORE | Moda Feminina</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <script>
+    tailwind.config = {
+      content: ["./**/*.{html,js}"],
+      theme: {
+        extend: {
+          colors: {
+            primary: '#000000',
+            soft: '#F8F4EF',
+            gold: '#D4B483',
+            rose: '#E8D8D0'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-soft text-black overflow-x-hidden font-light">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full bg-black text-white z-50 shadow-xl">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html">
+        <img src="assets/logo/ribb-logo.png" alt="RIBB.STORE" class="h-14" />
+      </a>
+
+      <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest">
+        <a href="index.html" class="hover:text-gold transition-colors">Início</a>
+        <a href="shop.html" class="hover:text-gold transition-colors">Shop</a>
+        <a href="#" class="hover:text-gold transition-colors">Lançamentos</a>
+        <a href="#" class="hover:text-gold transition-colors">Ofertas</a>
+        <a href="#" class="hover:text-gold transition-colors">Sobre</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <button onclick="toggleSearch()" class="text-2xl hover:text-gold transition">🔍</button>
+        <button class="text-2xl hover:text-gold transition">👤</button>
+        <button onclick="toggleWishlist()" class="text-2xl hover:text-gold transition">♡</button>
+        <button onclick="toggleCart()" class="text-2xl hover:text-gold transition relative" id="cart-icon">
+          🛒 <span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+
+        <a href="https://wa.me/5511958306589?text=Olá!%20Vim%20pelo%20site%20RIBB.STORE" 
+           target="_blank"
+           class="hidden md:block bg-green-500 hover:bg-green-600 px-5 py-2.5 rounded-full font-medium transition">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="min-h-screen bg-black flex items-center justify-center relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40"></div>
+    <div class="relative z-10 text-center px-6 text-white">
+      <img src="assets/logo/ribb-logo.png" alt="RIBB.STORE" class="mx-auto w-80 mb-8">
+      <h1 class="text-5xl md:text-7xl font-light tracking-widest mb-6">Elegância que Inspira</h1>
+      <p class="text-xl max-w-xl mx-auto mb-10">Peças exclusivas para mulheres que valorizam sofisticação e estilo próprio.</p>
+      <a href="shop.html" class="inline-block bg-gold text-black px-10 py-4 rounded-full text-lg font-medium hover:scale-105 transition">
+        Explorar Coleção
+      </a>
+    </div>
+  </section>
+
+  <!-- NOVIDADES -->
+  <section class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="flex justify-between items-end mb-10">
+      <h2 class="text-4xl font-light uppercase tracking-widest">Novidades</h2>
+      <a href="shop.html" class="text-gold hover:underline">Ver todos →</a>
+    </div>
+
+    <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+  </section>
+
+  <!-- WHATSAPP FLUTUANTE -->
+  <a href="https://wa.me/5511958306589?text=Olá!%20Vi%20no%20site%20RIBB.STORE%20e%20gostaria%20de%20tirar%20dúvidas." 
+     target="_blank"
+     class="fixed bottom-6 right-6 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-50 hover:scale-110 transition">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="w-9">
+  </a>
+
+
+<!-- CART DRAWER -->
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full md:w-96 bg-black text-white shadow-2xl transform translate-x-full transition-transform duration-300 z-[100] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-light">Seu Carrinho</h2>
+        <button onclick="closeCart()" class="text-4xl leading-none hover:text-gold">×</button>
+      </div>
+      <div id="cart-items" class="space-y-8 mb-10"></div>
+
+      <div class="border-t border-white/20 pt-6">
+        <div class="flex justify-between text-lg mb-6">
+          <span>Total</span>
+          <span class="text-gold font-bold">R$ <span id="cart-total">0,00</span></span>
+        </div>
+        <button onclick="finalizePurchase()" class="w-full bg-gold text-black py-5 rounded-full font-medium text-lg hover:bg-white transition mb-4">
+          Finalizar Compra
+        </button>
+        <a href="https://wa.me/5511958306589?text=Olá! Quero finalizar meu pedido" target="_blank" class="block text-center text-green-400 hover:underline">
+          Ou finalizar via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

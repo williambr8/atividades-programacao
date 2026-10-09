@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal do Colaborador</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        input, textarea, button {
+            display: block;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            padding: 8px;
+        }
+
+        textarea {
+            width: 400px;
+            height: 120px;
+        }
+
+        #mensagem {
+            display: none;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Bem-vindo ao Portal</h1>
+
+    <label for="nome">Nome Completo:</label>
+    <input type="text" id="nome">
+
+    <label for="email">E-mail corporativo:</label>
+    <input type="email" id="email">
+
+    <button id="enviar" onclick="enviarDados()">
+        Enviar Dados
+    </button>
+
+    <p id="mensagem">Dados enviados com sucesso!</p>
+
+    <hr>
+
+    <h2>Ações Avançadas</h2>
+
+    <button id="duploClique" ondblclick="autorizar()">
+        Duplo clique para Autorizar
+    </button>
+
+    <button id="cliqueDireito" oncontextmenu="opcoes(event)">
+        Clique direito para Opções
+    </button>
+
+    <textarea id="observacoes">Apague este texto e insira suas observações.</textarea>
+
+
+    <script>
+        function enviarDados() {
+            document.getElementById("mensagem").style.display = "block";
+        }
+
+        function autorizar() {
+            document.getElementById("duploClique").innerText = "Autorizado!";
+        }
+
+        function opcoes(event) {
+            event.preventDefault();
+            document.getElementById("cliqueDireito").innerText = "Menu Aberto!";
+        }
+    </script>
+
+</body>
+</html>

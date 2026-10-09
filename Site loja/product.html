@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produto - RIBB.STORE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-soft">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full bg-black text-white z-50 shadow-xl">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html">
+        <img src="assets/logo/ribb-logo.png" alt="RIBB.STORE" class="h-14" />
+      </a>
+      
+      <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest">
+        <a href="index.html" class="hover:text-gold">Início</a>
+        <a href="shop.html" class="hover:text-gold">Shop</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <button class="text-2xl">🔍</button>
+        <button class="text-2xl">👤</button>
+        <button onclick="toggleWishlist()" class="text-2xl">♡</button>
+        <button onclick="toggleCart()" class="text-2xl relative" id="cart-icon">
+          🛒 <span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="pt-28 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+    
+    <!-- Galeria -->
+    <div>
+      <img id="main-image" src="https://picsum.photos/id/1015/800/1000" 
+           class="w-full rounded-3xl shadow-2xl" alt="Produto">
+      <div class="grid grid-cols-4 gap-4 mt-6">
+        <img onclick="changeImage(this)" src="https://picsum.photos/id/1015/800/1000" 
+             class="cursor-pointer rounded-2xl border-2 border-gold">
+        <img onclick="changeImage(this)" src="https://picsum.photos/id/1027/800/1000" 
+             class="cursor-pointer rounded-2xl">
+        <img onclick="changeImage(this)" src="https://picsum.photos/id/106/800/1000" 
+             class="cursor-pointer rounded-2xl">
+      </div>
+    </div>
+
+    <!-- Informações do Produto -->
+    <div>
+      <h1 id="product-name" class="text-4xl font-light">Vestido Midi Elegance</h1>
+      <p id="product-price" class="text-3xl text-gold mt-4">R$ 289,90</p>
+
+      <div class="mt-8">
+        <p class="font-medium mb-3">Cor</p>
+        <div class="flex gap-3">
+          <button class="w-10 h-10 rounded-full bg-black border-2 border-white"></button>
+          <button class="w-10 h-10 rounded-full bg-rose-300 border-2 border-white"></button>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <p class="font-medium mb-3">Tamanho</p>
+        <div class="flex gap-3">
+          <button class="size-btn active">P</button>
+          <button class="size-btn">M</button>
+          <button class="size-btn">G</button>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-col gap-4">
+        <button onclick="addToCart(1)" 
+                class="bg-black text-white py-5 rounded-full text-lg font-medium hover:bg-gold hover:text-black transition">
+          Adicionar ao Carrinho
+        </button>
+
+        <a href="https://wa.me/5511958306589?text=Olá! Quero comprar o Vestido Midi Elegance" 
+           target="_blank"
+           class="bg-green-500 text-white py-5 rounded-full text-lg font-medium text-center hover:bg-green-600 transition">
+          Comprar via WhatsApp
+        </a>
+      </div>
+
+      <div class="mt-12 text-sm leading-relaxed opacity-80">
+        Peça sofisticada em crepe premium com caimento perfeito. Ideal para ocasiões especiais.
+      </div>
+    </div>
+  </div>
+
+ <!-- CART DRAWER -->
+<div id="cart-drawer" 
+     class="fixed top-0 right-0 h-full w-full md:w-96 bg-black text-white shadow-2xl 
+            transform translate-x-full transition-transform duration-300 z-[100] overflow-y-auto">
+
+  <div class="p-6">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-2xl font-light">Seu Carrinho</h2>
+      <button onclick="closeCart()" class="text-4xl leading-none hover:text-gold transition">×</button>
+    </div>
+
+    <div id="cart-items" class="space-y-8 mb-10 min-h-[300px]"></div>
+
+    <div class="border-t border-white/20 pt-6">
+      <div class="flex justify-between items-center text-lg mb-6">
+        <span>Total</span>
+        <span class="text-gold font-bold">R$ <span id="cart-total">0,00</span></span>
+      </div>
+
+      <button onclick="finalizePurchase()" 
+              class="w-full bg-gold text-black py-5 rounded-full font-medium text-lg hover:bg-white transition mb-4">
+        Finalizar Compra
+      </button>
+
+      <a href="https://wa.me/5511958306589?text=Olá! Quero finalizar meu pedido do site RIBB.STORE" 
+         target="_blank"
+         class="block text-center text-green-400 hover:text-green-500 transition">
+        Ou finalizar via WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
